@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="pre_order_form_view" model="ir.ui.view">
+		<field name="name">pre_order_form_view</field>
+		<field name="model">pre.order</field>
+		<field name="arch" type="xml">
+			<form string="Pre-Order Form">
+				<header>
+				</header>
+				<sheet>
+					<h1>
+						<field name="name"/>
+					</h1>
+					<group col="4">
+						<field name="details"/>
+						<field name="order_date"/>
+					</group>
+
+					<field name="line_ids" nolabel="1">
+						<tree editable="bottom">
+							<field name="product_id"/>
+							<field name="qty"/>
+						</tree>
+					</field>
+
+				</sheet>
+			</form>	
+		</field>
+	</record>
+
+
+	<record id="pre_order_tree_view" model="ir.ui.view">
+		<field name="name">pre_order_tree_view</field>
+		<field name="model">pre.order</field>
+		<field name="arch" type="xml">
+
+			<tree string="Orders">
+				<field name="name"/>
+				<field name="order_date"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="pre_order_action_view" model="ir.actions.act_window">
+		<field name="name">Pre-Orders</field>
+		<field name="res_model">pre.order</field>
+		<field name="view_mode">tree,form</field>
+		<field name="search_view_id" eval="False"/>
+		<field name="domain">[]</field>
+		<field name="context">{}</field>
+		<field name="help"></field>
+	</record>
+
+	<record id="pre_order_action_view_tree" model="ir.actions.act_window.view">
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="pre_order_tree_view"/>
+		<field name="act_window_id" ref="pre_order_action_view"/>
+		<field eval="1" name="sequence"/>
+	</record>
+
+
+	<record id="pre_order_action_view_form" model="ir.actions.act_window.view">
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="pre_order_form_view"/>
+		<field name="act_window_id" ref="pre_order_action_view"/>
+		<field eval="2" name="sequence"/>
+	</record>
+
+	<menuitem id="pre_order_sub_menu" name="Pre-Orders" action="pre_order_action_view" parent="pre_order_main_menu"/>
+		
+
+
+
+</odoo>
