@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<odoo>
-	<menuitem id="pre_order_main_menu" name="Pre-Order" web_icon="pre_order,static/icon.png"/>
-
-</odoo>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
+		<!-- 1.  has a table that takes a daily "Metal price" and current date "Date". It should display historical data from previous days. "Date" should by default show the current date but it could be edited. -->
 		<record id="metal_price_entry_wizard_form" model="ir.ui.view">
 			<field name="name">metal.price.entry.wizard.form</field>
 			<field name="model">metal.price.entry.wizard</field>
@@ -43,6 +44,7 @@
 			<field name="target">new</field>
 		</record>
 
+		<!-- 1. In the invoicing app (tree view), add a new menu next to "Vendor" that opens a wizard -->
 		<menuitem
 			action="metal_price_entry_wizard_action"
 			id="menu_metal_price_entry_wizard"

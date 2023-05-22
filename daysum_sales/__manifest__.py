@@ -12,6 +12,8 @@
 		# 'views/menu_view.xml',
 		'views/metal_price_views.xml',
 		'wizard/metal_price_entry_wizard_views.xml',
+		'views/account_move_views.xml',
+		'views/res_partner_views.xml',
 	],
 	'qweb': [],
 	'installable': True,
