@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="metal_price_entry_wizard_form" model="ir.ui.view">
+			<field name="name">metal.price.entry.wizard.form</field>
+			<field name="model">metal.price.entry.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<field name="metal_price_lines" nolabel="1" colspan="4">
+						<form string="Metal Prices">
+							<group>
+								<group>
+									<field name="date"/>
+									<field name="price"/>
+								</group>
+							</group>
+						</form>
+						<tree  reate="0" delete="0" no_open="1" create="0">
+							<field name="date"/>
+							<field name="price"/>
+						</tree>
+					</field>
+
+					<group>
+						<field name="date"/>
+						<field name="price"/>
+					</group>
+
+
+					<footer>
+						<button string="Create Metal Price" name="do_action" type="object" class="oe_highlight" data-hotkey="q"/>
+						<button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="z"/>
+					</footer>
+				</form>
+
+			</field>
+		</record>
+
+		<record id="metal_price_entry_wizard_action" model="ir.actions.act_window">
+			<field name="name">Create Metal Price</field>
+			<field name="res_model">metal.price.entry.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem
+			action="metal_price_entry_wizard_action"
+			id="menu_metal_price_entry_wizard"
+			name="Metal Price"
+			sequence="4"
+			parent="account.menu_finance"/>
+	</data>
+</odoo>

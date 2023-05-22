@@ -1,5 +1,7 @@
 from odoo import api, fields, models, _ 
 
+
+#Metal Price Table
 class PreOrder(models.Model):
 	_name = 'pre.order'
 	_description = 'Pre Order Form'
