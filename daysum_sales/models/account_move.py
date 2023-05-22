@@ -44,3 +44,4 @@ class AccountMove(models.Model):
 	total_weight = fields.Float(compute='_compute_with_weight_and_total', store=True)
 
 
+
