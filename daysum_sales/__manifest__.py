@@ -5,7 +5,7 @@
 	'version': '16.0',
 	'description': "",
 	'author': 'Mikul',
-	'depends': ['sale_management'],
+	'depends': ['sale_management','stock'],
 	'demo': [],
 	'data': [
 		'security/ir.model.access.csv',

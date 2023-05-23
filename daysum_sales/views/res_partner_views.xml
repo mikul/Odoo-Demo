@@ -13,6 +13,7 @@
 					icon="fa-tachometer">
 					<field string="Weight" name="invoice_total_weight_count" widget="statinfo"/>
 				</button>
+
 			</div>
 
 		</field>

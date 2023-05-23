@@ -12,6 +12,17 @@
 					<field name="with_weight" invisible="1"/>
 					<field name="total_weight" invisible="1"/>
 				</field>
+
+				<!-- 2.b Make account move line "total" field editable for products that has a UoM of type "weight" only. -->
+				<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_total']" position="before">
+					<field name="if_weight_uom" optional="hide"/>
+				</xpath>
+				<xpath expr="//field[@name='price_total']" position="attributes">
+						<attribute name="attrs">{'readonly': [ ('if_weight_uom', '=', False)]}</attribute>
+				</xpath>
+				<xpath expr="//field[@name='price_total']" position="replace">
+						<field name="price_total" string="Total" optional="show"/>
+				</xpath>
 			</field>
 		</record>
 	</data>
