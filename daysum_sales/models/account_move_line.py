@@ -8,7 +8,7 @@ class AccountMoveLine(models.Model):
 	@api.constrains('quantity', 'product_uom_id')
 	def _check_quantity(self):
 		for move in self:
-			if move.product_uom_id.category_id.name == 'Weight' and move.quantity == 0:
+			if move.product_uom_id.category_id.name == 'Weight' and move.quantity == 0 and move.price_total != 0:
 				raise ValidationError("Quantity should not be zero for Weight.")
 
 	@api.depends('product_uom_id')
@@ -48,7 +48,11 @@ class AccountMoveLine(models.Model):
 	@api.onchange('price_total')
 	def _onchange_compute_price_unit(self):
 		for line in self:
+
 			if line.if_weight_uom:
+				if line.quantity == 0:
+					raise ValidationError("Quantity should not be zero for Weight.")
+					
 				if line.display_type != 'product':
 					line.price_total = line.price_subtotal = False
 
