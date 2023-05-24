@@ -17,11 +17,11 @@
 				<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_total']" position="before">
 					<field name="if_weight_uom" optional="hide"/>
 				</xpath>
-				<xpath expr="//field[@name='price_total']" position="attributes">
-						<attribute name="attrs">{'readonly': [ ('if_weight_uom', '=', False)]}</attribute>
+				<xpath expr="//field[@name='price_subtotal']" position="replace">
+						<field name="price_subtotal" readonly="1" />
 				</xpath>
 				<xpath expr="//field[@name='price_total']" position="replace">
-						<field name="price_total" string="Total" optional="show"/>
+						<field name="price_total" string="Total" optional="show" attrs="{'readonly': [('if_weight_uom', '=', False)]}" />
 				</xpath>
 			</field>
 		</record>
