@@ -24,6 +24,20 @@ class AccountMove(models.Model):
 
 		return super(AccountMove, self).write(vals)
 
+	@api.model_create_multi
+	def create(self, vals_list):
+		#2.a. and it'll be saved along with the current date and it should appear in the metal price table.
+		for vals in vals_list:
+			if 'metal_price' in vals:
+				if vals.get('metal_price', 0) != 0:			
+					price_obj = self.env['metal.price'].search([('date','=',fields.Datetime.now().strftime('%Y-%m-%d'))])
+					if price_obj:
+						price_obj.write({'price':float(vals.get('metal_price', 0))})
+					else:
+						self.env['metal.price'].create({'date': fields.Datetime.now().strftime('%Y-%m-%d'), 'price': float(vals.get('metal_price', 0)) })
+
+		return super(AccountMove, self).create(vals_list)
+
 	#3 In the customer (partner) form view add a smart button that displays the total of "quantity" column billed to that customer that has UoM of type "weight".
 	@api.depends('line_ids')
 	def _compute_with_weight_and_total(self):
